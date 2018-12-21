@@ -50,3 +50,23 @@ kbd {
     letter-spacing: .1rem;
     color: #ffc600;
 }
+
+@media all and (max-width:1000px) {
+
+
+    .keys {
+        align-items: flex-start;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
+
+
+}
+
+
+@media all and (max-width:500px) {
+    .key {
+        flex: 1 1 33.333%;
+    }
+}
