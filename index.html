@@ -13,48 +13,48 @@
     <div class="keys">
 
         <div data-key="65" class="key">
-            <kbd>A</kbd>
-            <span class="sound">clap</span>
+            <kbd data-key="65" >A</kbd>
+            <span data-key="65" class="sound">clap</span>
         </div>
 
         <div data-key="83" class="key">
-            <kbd>S</kbd>
-            <span class="sound">hihat</span>
+            <kbd data-key="83">S</kbd>
+            <span  data-key="83" class="sound">hihat</span>
         </div>
 
         <div data-key="68" class="key">
-            <kbd>D</kbd>
-            <span class="sound">kick</span>
+            <kbd data-key="68">D</kbd>
+            <span data-key="68" class="sound">kick</span>
         </div>
 
         <div data-key="70" class="key">
-            <kbd>F</kbd>
-            <span class="sound">openhat</span>
+            <kbd data-key="70">F</kbd>
+            <span data-key="70" class="sound">openhat</span>
         </div>
 
         <div data-key="71" class="key">
-            <kbd>G</kbd>
-            <span class="sound">boom</span>
+            <kbd data-key="71">G</kbd>
+            <span data-key="71" class="sound">boom</span>
         </div>
 
         <div data-key="72" class="key">
-            <kbd>H</kbd>
-            <span class="sound">ride</span>
+            <kbd data-key="72">H</kbd>
+            <span data-key="72" class="sound">ride</span>
         </div>
 
         <div data-key="74" class="key">
-            <kbd>J</kbd>
-            <span class="sound">snare</span>
+            <kbd data-key="74" >J</kbd>
+            <span data-key="74" class="sound">snare</span>
         </div>
 
         <div data-key="75" class="key">
-            <kbd>K</kbd>
-            <span class="sound">tom</span>
+            <kbd data-key="75">K</kbd>
+            <span data-key="75" class="sound">tom</span>
         </div>
 
         <div data-key="76" class="key">
-            <kbd>L</kbd>
-            <span class="sound">tink</span>
+            <kbd data-key="76">L</kbd>
+            <span data-key="76" class="sound">tink</span>
         </div>
 
 
@@ -75,6 +75,15 @@
 
 
     <script>
+        const clickPlay = (e) => {
+            const key = e.target.getAttribute('data-key');
+            const audio = document.querySelector(`audio[data-key="${key}"]`);
+            if (!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        
 
     const playSound = (e) => {
             console.log(e.keyCode);
@@ -91,13 +100,15 @@
         key.classList.add('playing');
     }
 
-    function removeTransition(e){
+    const removeTransition = (e) => {
         e.target.classList.remove('playing');    
     }
 
     const keys = Array.from(document.querySelectorAll('.key'));
     
     keys.forEach(key => addEventListener('transitionend',removeTransition));
+
+    keys.forEach(key => addEventListener('click', clickPlay));
     
     
     
