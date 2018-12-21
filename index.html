@@ -83,7 +83,15 @@
             audio.play();
         }
 
-        
+        const clickTransition = (e) => {
+         const code = e.target.getAttribute('data-key');
+         console.log(code);
+         const key = document.querySelector(`.key[data-key="${code}"]`);
+         console.log(key);
+         key.classList.add('playing');
+         
+
+        }
 
     const playSound = (e) => {
             console.log(e.keyCode);
@@ -109,6 +117,7 @@
     keys.forEach(key => addEventListener('transitionend',removeTransition));
 
     keys.forEach(key => addEventListener('click', clickPlay));
+    keys.forEach(key => addEventListener('click', clickTransition));
     
     
     
