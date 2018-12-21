@@ -116,8 +116,12 @@
     
     keys.forEach(key => addEventListener('transitionend',removeTransition));
 
-    keys.forEach(key => addEventListener('click', clickPlay));
-    keys.forEach(key => addEventListener('click', clickTransition));
+    
+
+    keys.forEach(key => addEventListener('click', function(e){
+        clickPlay(e);
+        clickTransition(e);
+    }));
     
     
     
